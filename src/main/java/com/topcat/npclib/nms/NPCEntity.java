@@ -52,18 +52,18 @@ public class NPCEntity extends EntityPlayer {
 
     @Override
     public void b_(EntityHuman entity) {
-        if ((lastBounceId != entity.id || System.currentTimeMillis() - lastBounceTick > 1000) && entity.getBukkitEntity().getLocation().distanceSquared(getBukkitEntity().getLocation()) <= 1) {
+        if ((lastBounceId != getBukkitEntity().getEntityId() || System.currentTimeMillis() - lastBounceTick > 1000) && entity.getBukkitEntity().getLocation().distanceSquared(getBukkitEntity().getLocation()) <= 1) {
             final EntityTargetEvent event = new NpcEntityTargetEvent(getBukkitEntity(), entity.getBukkitEntity(), NpcEntityTargetEvent.NpcTargetReason.NPC_BOUNCED);
             Bukkit.getPluginManager().callEvent(event);
 
             lastBounceTick = System.currentTimeMillis();
-            lastBounceId = entity.id;
+            lastBounceId = getBukkitEntity().getEntityId();
         }
 
-        if (lastTargetId == -1 || lastTargetId != entity.id) {
+        if (lastTargetId == -1 || lastTargetId != getBukkitEntity().getEntityId()) {
             final EntityTargetEvent event = new NpcEntityTargetEvent(getBukkitEntity(), entity.getBukkitEntity(), NpcEntityTargetEvent.NpcTargetReason.CLOSEST_PLAYER);
             Bukkit.getPluginManager().callEvent(event);
-            lastTargetId = entity.id;
+            lastTargetId = getBukkitEntity().getEntityId();
         }
 
         super.b_(entity);
@@ -71,14 +71,14 @@ public class NPCEntity extends EntityPlayer {
 
     @Override
     public void c(Entity entity) {
-        if (lastBounceId != entity.id || System.currentTimeMillis() - lastBounceTick > 1000) {
+        if (lastBounceId != getBukkitEntity().getEntityId() || System.currentTimeMillis() - lastBounceTick > 1000) {
             final EntityTargetEvent event = new NpcEntityTargetEvent(getBukkitEntity(), entity.getBukkitEntity(), NpcEntityTargetEvent.NpcTargetReason.NPC_BOUNCED);
             Bukkit.getPluginManager().callEvent(event);
 
             lastBounceTick = System.currentTimeMillis();
         }
 
-        lastBounceId = entity.id;
+        lastBounceId = getBukkitEntity().getEntityId();
 
         super.c(entity);
     }

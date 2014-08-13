@@ -8,10 +8,8 @@ import net.minecraft.server.v1_7_R4.PacketPlayInFlying;
 import net.minecraft.server.v1_7_R4.PacketPlayInUpdateSign;
 import net.minecraft.server.v1_7_R4.PacketPlayInBlockDig;
 import net.minecraft.server.v1_7_R4.PacketPlayInBlockPlace;
-import net.minecraft.server.v1_7_R4.Packet16BlockItemSwitch;
 import net.minecraft.server.v1_7_R4.PacketPlayInArmAnimation;
 import net.minecraft.server.v1_7_R4.PacketPlayInEntityAction;
-import net.minecraft.server.v1_7_R4.Packet255KickDisconnect;
 import net.minecraft.server.v1_7_R4.PacketPlayInChat;
 import net.minecraft.server.v1_7_R4.PacketPlayInUseEntity;
 import net.minecraft.server.v1_7_R4.PacketPlayInClientCommand;
@@ -55,10 +53,6 @@ public class NPCPlayerConnection extends PlayerConnection {
     }
 
     @Override
-    public void a(Packet16BlockItemSwitch packet16blockitemswitch) {
-    }
-
-    @Override
     public void a(PacketPlayInChat packet3chat) {
     }
 
@@ -68,10 +62,6 @@ public class NPCPlayerConnection extends PlayerConnection {
 
     @Override
     public void a(PacketPlayInEntityAction packet19entityaction) {
-    }
-
-    @Override
-    public void a(Packet255KickDisconnect packet255kickdisconnect) {
     }
 
     @Override
