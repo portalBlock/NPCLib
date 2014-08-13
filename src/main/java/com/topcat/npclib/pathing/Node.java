@@ -11,7 +11,7 @@ import org.bukkit.craftbukkit.v1_7_R4.CraftWorld;
 
 public class Node { // Holds data about each block we check
 
-    static List<Material> liquids = new ArrayList<>();
+    static List<Material> liquids = new ArrayList<Material>();
 
     static {
         liquids.add(Material.WATER);
@@ -39,7 +39,7 @@ public class Node { // Holds data about each block we check
     public void update() {
         notsolid = true;
         if (b.getType() != Material.AIR) {
-            final AxisAlignedBB box = net.minecraft.server.v1_7_R4.Block.byId[b.getTypeId()].b(((CraftWorld) b.getWorld()).getHandle(), b.getX(), b.getY(), b.getZ());
+            final AxisAlignedBB box = net.minecraft.server.v1_7_R4.Block.getById(b.getTypeId()).a(((CraftWorld) b.getWorld()).getHandle(), b.getX(), b.getY(), b.getZ());
             if (box != null) {
                 if (Math.abs(box.e - box.b) > 0.2) {
                     notsolid = false;
